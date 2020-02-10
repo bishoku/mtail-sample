@@ -1,0 +1,41 @@
+package com.example.demo;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.ThreadLocalRandom;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DemoApplication implements CommandLineRunner {
+
+	private static Logger LOG = LoggerFactory.getLogger(DemoApplication.class);
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		
+		String[] sCnnTypes = new String[] {"Ethernet","Internet","GPRS","GSM","Dialup","Sanal POS","Other"}; 
+		String[] txnCategories = new String[] {"GRUP KAPAMA","ONLINE TRANSACTION","İPTAL","PUAN SORGU","PUAN KULLANIM","KOIC","KOIA","HAZIRKART","TURKCELL FATURA","DİGÜTÜRK FATURA","TURKCELL NAKİT TAHSİLAT","KREDİ KARTI BORÇ ÖDEME","KREDİ KARTI BORÇ SORGUSU","VFT SORGUTRİO LİMİT SORGURULO TALEP","AKTİVASYON","KKBO GRUP KAPAMA","HEDİYE KART BAKİYE SORGUCUSOMER IDENTİFİCATİON","WORLD PUAN KAZANIM","TRİO ÖDEME LİSTESİ SORGUNFC SATIŞ","TAAHHÜT","ADVİCE","LİMİT İŞLEMİ","TATO TAAHHÜT TOPLAMA","EKUPON","PARAMETER_LOAD_TXN","PUAN DİĞER","DİĞER İŞLEMİ"};
+		String[] txnState = new String[] {"CONNECTION STARTED","HALF PACKAGE","LRC ERROR","ENC/DEC ERROR","PACKAGE ERROR","PCK GENERATION ENC ERROR","SUCCESS TRANSACTION","HOST SESSION OPEN PROBLEM","HOST RECEIVE PROBLEM","CONNECTION DROPPED","CLIENT TIMEOUT","CLIENT RECEIVE ERROR"};
+		while (true) {
+			Thread.sleep(10);
+			int randomNum = ThreadLocalRandom.current().nextInt(10, 1000 + 1);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String timestamp = sdf.format(new Date(System.currentTimeMillis()));
+			
+			
+	
+			LOG.info("000237:554 | [B000502] <BSN><INF> [__RecvProcTcpSrv] Message Total Stats Pos Client : [172.19.101.205][38410] timestamp: ["+timestamp+"] ipTypeSerNo:[282] slpType:[TURKCELL GPRS YENI] cnnTypeSerNo:[3] sCnnType:["+sCnnTypes[ThreadLocalRandom.current().nextInt(0, 6)]+"] tranCatSerNo:[1] sTranType:["+txnCategories[ThreadLocalRandom.current().nextInt(0, txnCategories.length)]+"] cardCategorySerNo:[0] sCardCategory:[] tranStateSerNo:[7] sTranState:["+txnState[ThreadLocalRandom.current().nextInt(0, txnState.length)]+"] TotPck:["+ThreadLocalRandom.current().nextInt(1, 10)+"] TotalTime:["+ThreadLocalRandom.current().nextInt(200, 5000 + 1)+"]");
+		}
+
+	}
+
+}
