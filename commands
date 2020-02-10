@@ -1,0 +1,1 @@
+mtail --progs mtail\linetotals.mtail --logs  log-exporter\demo\*.log --poll_interval 50ms
