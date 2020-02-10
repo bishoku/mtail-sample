@@ -1,0 +1,29 @@
+counter txn_response_time by  ip, slpType, sCnnType, sTranType, sCardCategory,  sTranState
+counter txn_response_count by ip, slpType, sCnnType, sTranType, sCardCategory, sTranState
+counter txn_package_count by ip, slpType, sCnnType, sTranType, sCardCategory, sTranState
+
+
+/(?P<firstPart>\d{6}:\d{3}) \| / +
+/\[(?P<second>[A-Z0-9]*)\] / +
+/\<(?P<bsn>[A-Z]*)\>/ +
+/\<(?P<inf>[A-Z]*)\> / +
+/\[(?P<server>.*?)\] / +
+/Message Total Stats Pos Client : \[(?P<ip>.*?)\]/ +
+/\[(?P<port>.*?)\] / +
+/timestamp: \[(?P<ts>.*?)\] / +
+/ipTypeSerNo:\[(?P<ipTypeSerNo>.*?)\] / +
+/slpType:\[(?P<slpType>.*?)\] / +
+/cnnTypeSerNo:\[(?P<cnnTypeSerNo>.*?)\] / +
+/sCnnType:\[(?P<sCnnType>.*?)\] / +
+/tranCatSerNo:\[(?P<tranCatSerNo>.*?)\] / +
+/sTranType:\[(?P<sTranType>.*?)\] / +
+/cardCategorySerNo:\[(?P<cardCategorySerNo>.*?)\] / +
+/sCardCategory:\[(?P<sCardCategory>.*?)\] / +
+/tranStateSerNo:\[(?P<tranStateSerNo>.*?)\] / +
+/sTranState:\[(?P<sTranState>.*?)\] / +
+/TotPck:\[(?P<TotPck>\d*)\] / +
+/TotalTime:\[(?P<TotalTime>\d*)\]/ {
+  txn_response_time[$ip][$slpType][$sCnnType][$sTranType][$sCardCategory][$sTranState] += $TotalTime
+  txn_response_count[$ip][$slpType][$sCnnType][$sTranType][$sCardCategory][$sTranState] ++
+  txn_package_count[$ip][$slpType][$sCnnType][$sTranType][$sCardCategory][$sTranState] += $TotPck
+}
