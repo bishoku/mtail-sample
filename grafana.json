@@ -1,0 +1,475 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1581336958597,
+  "links": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 4,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(txn_response_count{sCnnType=~\"$connectionType\",sTranState=\"SUCCESS TRANSACTION\"})/sum(txn_response_count{sCnnType=~\"$connectionType\"})",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Panel Title",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "cacheTimeout": null,
+      "datasource": null,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 6,
+      "links": [],
+      "options": {
+        "colorMode": "value",
+        "fieldOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "defaults": {
+            "mappings": [
+              {
+                "id": 0,
+                "op": "=",
+                "text": "N/A",
+                "type": 1,
+                "value": "null"
+              }
+            ],
+            "nullValueMode": "connected",
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": [],
+          "values": false
+        },
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "horizontal"
+      },
+      "pluginVersion": "6.6.1",
+      "targets": [
+        {
+          "expr": "sum(txn_response_count)",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Panel Title",
+      "type": "stat"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 16,
+        "w": 23,
+        "x": 0,
+        "y": 8
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "rate(txn_response_time{sCnnType=\"$connectionType\"}[5m]) / rate(txn_response_count{sCnnType=\"$connectionType\"}[5m])",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Panel Title",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 22,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "GPRS",
+          "value": "GPRS"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(txn_response_time,sCnnType)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Connection Type",
+        "multi": false,
+        "name": "connectionType",
+        "options": [],
+        "query": "label_values(txn_response_time,sCnnType)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "text": "DİĞER İŞLEMİ",
+          "value": "DİĞER İŞLEMİ"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(txn_response_time{sCnnType=\"$connectionType\"},sTranType)",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Transaction Type",
+        "multi": false,
+        "name": "tranType",
+        "options": [
+          {
+            "selected": false,
+            "text": "ADVİCE",
+            "value": "ADVİCE"
+          },
+          {
+            "selected": false,
+            "text": "AKTİVASYON",
+            "value": "AKTİVASYON"
+          },
+          {
+            "selected": false,
+            "text": "DİGÜTÜRK FATURA",
+            "value": "DİGÜTÜRK FATURA"
+          },
+          {
+            "selected": true,
+            "text": "DİĞER İŞLEMİ",
+            "value": "DİĞER İŞLEMİ"
+          },
+          {
+            "selected": false,
+            "text": "EKUPON",
+            "value": "EKUPON"
+          },
+          {
+            "selected": false,
+            "text": "GRUP KAPAMA",
+            "value": "GRUP KAPAMA"
+          },
+          {
+            "selected": false,
+            "text": "HAZIRKART",
+            "value": "HAZIRKART"
+          },
+          {
+            "selected": false,
+            "text": "HEDİYE KART BAKİYE SORGUCUSOMER IDENTİFİCATİON",
+            "value": "HEDİYE KART BAKİYE SORGUCUSOMER IDENTİFİCATİON"
+          },
+          {
+            "selected": false,
+            "text": "KKBO GRUP KAPAMA",
+            "value": "KKBO GRUP KAPAMA"
+          },
+          {
+            "selected": false,
+            "text": "KOIA",
+            "value": "KOIA"
+          },
+          {
+            "selected": false,
+            "text": "KOIC",
+            "value": "KOIC"
+          },
+          {
+            "selected": false,
+            "text": "KREDİ KARTI BORÇ SORGUSU",
+            "value": "KREDİ KARTI BORÇ SORGUSU"
+          },
+          {
+            "selected": false,
+            "text": "KREDİ KARTI BORÇ ÖDEME",
+            "value": "KREDİ KARTI BORÇ ÖDEME"
+          },
+          {
+            "selected": false,
+            "text": "LİMİT İŞLEMİ",
+            "value": "LİMİT İŞLEMİ"
+          },
+          {
+            "selected": false,
+            "text": "ONLINE TRANSACTION",
+            "value": "ONLINE TRANSACTION"
+          },
+          {
+            "selected": false,
+            "text": "PARAMETER_LOAD_TXN",
+            "value": "PARAMETER_LOAD_TXN"
+          },
+          {
+            "selected": false,
+            "text": "PUAN DİĞER",
+            "value": "PUAN DİĞER"
+          },
+          {
+            "selected": false,
+            "text": "PUAN KULLANIM",
+            "value": "PUAN KULLANIM"
+          },
+          {
+            "selected": false,
+            "text": "PUAN SORGU",
+            "value": "PUAN SORGU"
+          },
+          {
+            "selected": false,
+            "text": "TAAHHÜT",
+            "value": "TAAHHÜT"
+          },
+          {
+            "selected": false,
+            "text": "TATO TAAHHÜT TOPLAMA",
+            "value": "TATO TAAHHÜT TOPLAMA"
+          },
+          {
+            "selected": false,
+            "text": "TRİO ÖDEME LİSTESİ SORGUNFC SATIŞ",
+            "value": "TRİO ÖDEME LİSTESİ SORGUNFC SATIŞ"
+          },
+          {
+            "selected": false,
+            "text": "TURKCELL FATURA",
+            "value": "TURKCELL FATURA"
+          },
+          {
+            "selected": false,
+            "text": "TURKCELL NAKİT TAHSİLAT",
+            "value": "TURKCELL NAKİT TAHSİLAT"
+          },
+          {
+            "selected": false,
+            "text": "VFT SORGUTRİO LİMİT SORGURULO TALEP",
+            "value": "VFT SORGUTRİO LİMİT SORGURULO TALEP"
+          },
+          {
+            "selected": false,
+            "text": "WORLD PUAN KAZANIM",
+            "value": "WORLD PUAN KAZANIM"
+          },
+          {
+            "selected": false,
+            "text": "İPTAL",
+            "value": "İPTAL"
+          }
+        ],
+        "query": "label_values(txn_response_time{sCnnType=\"$connectionType\"},sTranType)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "New dashboard",
+  "uid": null,
+  "version": 0
+}
